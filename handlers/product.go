@@ -1,8 +1,6 @@
 package handlers
 
 import (
-	"fmt"
-
 	"github.com/Pebody-h/Fake-Shop-Api/database"
 	"github.com/Pebody-h/Fake-Shop-Api/models"
 	"github.com/gofiber/fiber/v2"
@@ -42,8 +40,6 @@ func PostProducts(c *fiber.Ctx) error {
 	var products []models.Product
 
 	if err := c.BodyParser(&products); err != nil {
-		fmt.Println(&products)
-		fmt.Println(products)
 		return c.Status(400).JSON(err)
 	}
 
