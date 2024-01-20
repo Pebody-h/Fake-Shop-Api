@@ -41,7 +41,8 @@ func PostProducts(c *fiber.Ctx) error {
 	db := database.DB
 	var products []models.Product
 
-	if err := c.BodyParser(products); err != nil {
+	if err := c.BodyParser(&products); err != nil {
+		fmt.Println(&products)
 		fmt.Println(products)
 		return c.Status(400).JSON(err)
 	}
@@ -56,7 +57,7 @@ func PostProduct(c *fiber.Ctx) error {
 	db := database.DB
 	product := new(models.Product)
 
-	if err := c.BodyParser(product); err != nil {
+	if err := c.BodyParser(&product); err != nil {
 		return c.Status(400).JSON(err)
 	}
 
